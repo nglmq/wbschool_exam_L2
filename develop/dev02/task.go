@@ -19,16 +19,19 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"strconv"
 	"strings"
 	"unicode"
 )
 
-func Unpack(s string) (r string, err error) {
+func Unpack(s string) (string, error) {
+	if s == "" {
+		return "", nil
+	}
+
 	if _, err := strconv.Atoi(s); err == nil {
-		return r, errors.New("некорректная строка")
+		return "", fmt.Errorf("wrong string")
 	}
 
 	var prev rune
@@ -48,7 +51,7 @@ func Unpack(s string) (r string, err error) {
 		}
 	}
 
-	return b.String(), err
+	return b.String(), nil
 }
 
 func main() {

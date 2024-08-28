@@ -65,7 +65,6 @@ func parseArgs() GrepArgs {
 	}
 }
 
-// TODO: implement func for -A, -B, -C flags
 func grep(args GrepArgs) ([]string, error) {
 	file, err := os.Open(args.Filename)
 	if err != nil {
